@@ -5,14 +5,7 @@ from flask import request
 from flask import session
 from flask import url_for
 
-from . import app
-
-
-@app.route("/")
-def show_entries():
-    if not session.get("logged_in"):
-        return redirect(url_for("login"))
-    return render_template("entries/index.html")
+from .. import app
 
 
 @app.post("/login")

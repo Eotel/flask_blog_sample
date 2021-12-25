@@ -1,9 +1,13 @@
 from datetime import datetime
 
-from flask_blog import db
+from flask_sqlalchemy import DeclarativeMeta
+
+from .. import db
+
+BaseModel: DeclarativeMeta = db.Model
 
 
-class Entry(db.Model):
+class Entry(BaseModel):
     __tablename__ = "entries"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), unique=True)
